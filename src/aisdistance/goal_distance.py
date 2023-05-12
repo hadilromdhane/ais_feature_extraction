@@ -1,5 +1,5 @@
 # This file's purpose is to extract the exact distance and relative bearing to the goal.
-# The goal of an OS is defined as a ship that have the MMSI with a distance between 10NM and 15NM from the current position.
+# The goal of an OS is defined as a ship that have the MMSI with a distance between 3NM and 5NM from the current position.
 
 
 # Import necessary libraries
@@ -7,7 +7,8 @@ import pandas as pd
 import aisdistance.utm_module as utm_module
 
 # Load data from file(the intial decoded data)
-df = pd.read_csv('2020_07_01_sample_1000.csv')
+df = pd.read_csv(
+    'C:/Users/msi/Desktop/Project_PFE/data_folder/2020_07_01_sample_1000.csv')
 
 
 # Keep only relevant columns for goal generation phase
@@ -42,8 +43,8 @@ while i < len(df):
         distance_goal = utm_module.ED(N0, E0, N1, E1)
         distance_goal = utm_module.meter_to_NM(distance_goal)
 
-        # Check if the distance between 10 and 15 nautical miles, if yes so this the goal we are seaching for
-        if (10 <= distance_goal <= 15):
+        # Check if the distance between 3 and 5 nautical miles, if yes so this the goal we are seaching for
+        if (0 <= distance_goal <= 3):
 
             data = pd.concat([data, df.iloc[[i]]], ignore_index=True)
             data.loc[k, 'distance_goal'] = distance_goal
@@ -60,4 +61,5 @@ while i < len(df):
 
     i += 1
 
-data.to_csv('results.csv')
+data.to_csv(
+    'C:/Users/msi/Desktop/Project_PFE/data_folder/goal_generated.csv', index=False)
