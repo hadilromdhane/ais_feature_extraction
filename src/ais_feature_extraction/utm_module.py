@@ -210,6 +210,16 @@ def dtr(angle):
     """Takes angle in degree and transforms it to radiant."""
     return angle * math.pi / 180
 
+######################################################################
+
+
+def head_inter(head_OS, head_TS, to_2pi=True):
+    """Computes the intersection angle between headings in radiant (in [0, 2pi) if to_2pi, else [-pi, pi)).
+    Corresponds to C_T in Xu et al. (2022, Neurocomputing)."""
+    if to_2pi:
+        return angle_to_2pi(head_TS - head_OS)
+    else:
+        return angle_to_pi(head_TS - head_OS)
 
 ######################################################################
 

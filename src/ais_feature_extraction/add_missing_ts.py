@@ -113,14 +113,13 @@ while i < len(target_ships):
 
     i += len(first_df)
     # append current iteration's result to concatenated_df
+    # print(len(concatenated_df))
     concatenated_df = pd.concat(
         [concatenated_df, first_df, new_TS], ignore_index=True)
-
 
 final_df = concatenated_df
 final_df = final_df.dropna()
 final_df = final_df.reset_index(drop=True)
-
 
 final_df.to_csv(
     'C:/Users/msi/Desktop/Project_PFE/data_folder/missing_ts_added.csv', index=False)
