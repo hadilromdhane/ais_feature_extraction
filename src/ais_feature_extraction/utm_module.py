@@ -213,17 +213,6 @@ def dtr(angle):
 ######################################################################
 
 
-def head_inter(head_OS, head_TS, to_2pi=True):
-    """Computes the intersection angle between headings in radiant (in [0, 2pi) if to_2pi, else [-pi, pi)).
-    Corresponds to C_T in Xu et al. (2022, Neurocomputing)."""
-    if to_2pi:
-        return angle_to_2pi(head_TS - head_OS)
-    else:
-        return angle_to_pi(head_TS - head_OS)
-
-######################################################################
-
-
 def rtd(angle):
     """Takes angle in radiant and transforms it to degree."""
     return angle * 180 / math.pi
@@ -426,6 +415,16 @@ def polar_from_xy(x, y, with_r=True, with_angle=True):
     r = math.sqrt(x**2 + y**2) if with_r else None
     angle = angle_to_2pi(math.atan2(x, y)) if with_angle else None
     return r, angle
+######################################################################
+
+
+def head_inter(head_OS, head_TS, to_2pi=True):
+    """Computes the intersection angle between headings in radiant (in [0, 2pi) if to_2pi, else [-pi, pi)).
+    Corresponds to C_T in Xu et al. (2022, Neurocomputing)."""
+    if to_2pi:
+        return angle_to_2pi(head_TS - head_OS)
+    else:
+        return angle_to_pi(head_TS - head_OS)
 
 
 ######################################################################

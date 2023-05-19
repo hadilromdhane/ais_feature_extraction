@@ -1,6 +1,6 @@
 # Poetry build chain
 [tool.poetry]
-name = "aisdistance"
+name = "ais_feature_extraction"
 version = "0.1.0"
 description = ""
 authors = ["Hadil Romdhane <romdhanehadil7@gmail.com>"]

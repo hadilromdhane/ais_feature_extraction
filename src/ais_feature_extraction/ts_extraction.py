@@ -9,7 +9,7 @@ import aisdistance.utm_module as utm_module
 
 # Import our datafarme ( the output of goal_generation)
 df = pd.read_csv(
-    'C:/Users/msi/Desktop/Project_PFE/data_folder/goal_generated_hpc.csv')
+    'C:/Users/msi/Desktop/Project_PFE/data_hpc/goal_generated.csv')
 
 
 # Define the distance threshold for including target ships
@@ -78,4 +78,4 @@ for i in range(len(df)):
 
 
 target_ships.to_csv(
-    'C:/Users/msi/Desktop/Project_PFE/data_folder/ts_extracted.csv', index=False)
+    'C:/Users/msi/Desktop/Project_PFE/data_hpc/ts_extracted.csv', index=False)
